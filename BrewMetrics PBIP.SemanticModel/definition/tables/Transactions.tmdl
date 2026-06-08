@@ -1,0 +1,123 @@
+table Transactions
+	lineageTag: e3a72bb4-846e-44d4-a59e-d060a0b7a68d
+
+	column transaction_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 28e3e747-e19c-47b6-90ee-8abc3e4dd9e8
+		summarizeBy: sum
+		sourceColumn: transaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7fadc552-11b8-40f5-a6dd-cb561a7cc3ea
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		variation Variation
+			isDefault
+			relationship: a247fade-65cb-440d-b517-51769a9fe41d
+			defaultHierarchy: LocalDateTable_d281fc8d-8c21-45df-8600-af1da6712d02.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column transaction_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: d0e04fa9-8d60-4881-89d6-ff3011ab414b
+		summarizeBy: none
+		sourceColumn: transaction_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column transaction_qty
+		dataType: int64
+		formatString: 0
+		lineageTag: dc4672c2-8f53-486a-90e4-0425d3ec4d38
+		summarizeBy: sum
+		sourceColumn: transaction_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b0d21319-690e-4e70-960c-28c5bb2e4796
+		summarizeBy: sum
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_location
+		dataType: string
+		lineageTag: 5d533be1-1241-4527-a0db-e49cdc879ce6
+		summarizeBy: none
+		sourceColumn: store_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4230e5e4-8c58-42c9-8999-f326de5ae9a2
+		summarizeBy: sum
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		lineageTag: ed7343ea-9f80-49bc-84ed-e196f9bb91ef
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_category
+		dataType: string
+		lineageTag: c0583085-c51b-40b7-9fda-859f5c16a59a
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_type
+		dataType: string
+		lineageTag: 265b85fd-9ca9-432b-9b4d-a1b2ee867aea
+		summarizeBy: none
+		sourceColumn: product_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_detail
+		dataType: string
+		lineageTag: 95cbbfe2-dd6d-4777-a811-7f901d48cafc
+		summarizeBy: none
+		sourceColumn: product_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Transactions = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\ARYAN SINGH\Desktop\Coffee Sales Dashboard\Coffee Shop Sales.xlsx"), null, true),
+				    Transactions_Sheet = Source{[Item="Transactions",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Transactions_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"transaction_id", Int64.Type}, {"transaction_date", type date}, {"transaction_time", type time}, {"transaction_qty", Int64.Type}, {"store_id", Int64.Type}, {"store_location", type text}, {"product_id", Int64.Type}, {"unit_price", type number}, {"product_category", type text}, {"product_type", type text}, {"product_detail", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

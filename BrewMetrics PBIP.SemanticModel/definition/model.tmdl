@@ -1,0 +1,20 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Transactions"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Transactions
+ref table DateTableTemplate_8a445785-8f12-4195-a4a3-0274ae9ae6f0
+ref table LocalDateTable_d281fc8d-8c21-45df-8600-af1da6712d02
+
+ref cultureInfo en-US
+

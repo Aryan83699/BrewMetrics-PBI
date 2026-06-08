@@ -1,0 +1,5 @@
+relationship a247fade-65cb-440d-b517-51769a9fe41d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Transactions.transaction_date
+	toColumn: LocalDateTable_d281fc8d-8c21-45df-8600-af1da6712d02.Date
+

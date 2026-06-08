@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1e865a189100361298dd",
+  "position": {
+    "x": 81.1183597390494,
+    "y": 0,
+    "z": 4,
+    "height": 53.5960591133005,
+    "width": 425.87138863000933,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "BrewMetrics Dashboard",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Cambria",
+                      "fontStyle": "italic",
+                      "fontSize": "28pt",
+                      "color": "#402b1e"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
