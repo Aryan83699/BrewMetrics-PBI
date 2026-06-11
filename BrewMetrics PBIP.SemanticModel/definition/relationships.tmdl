@@ -1,5 +1,9 @@
-relationship a247fade-65cb-440d-b517-51769a9fe41d
+relationship 6e5e23ea-9a16-4342-a964-f73f487d06ae
 	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Date Table'.Date
+	toColumn: LocalDateTable_db2d1630-856a-4c65-b840-c6e4c9429434.Date
+
+relationship c4243913-2135-d8db-b006-32ad4a821509
 	fromColumn: Transactions.transaction_date
-	toColumn: LocalDateTable_d281fc8d-8c21-45df-8600-af1da6712d02.Date
+	toColumn: 'Date Table'.Date
 

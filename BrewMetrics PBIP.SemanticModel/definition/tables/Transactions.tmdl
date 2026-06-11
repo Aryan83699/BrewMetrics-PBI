@@ -17,11 +17,6 @@ table Transactions
 		summarizeBy: none
 		sourceColumn: transaction_date
 
-		variation Variation
-			isDefault
-			relationship: a247fade-65cb-440d-b517-51769a9fe41d
-			defaultHierarchy: LocalDateTable_d281fc8d-8c21-45df-8600-af1da6712d02.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -105,6 +100,14 @@ table Transactions
 		sourceColumn: product_detail
 
 		annotation SummarizationSetBy = Automatic
+
+	column Sales = Transactions[unit_price]*Transactions[transaction_qty]
+		lineageTag: 2df98037-4201-4964-8d1d-a22abd7eee45
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition Transactions = m
 		mode: import

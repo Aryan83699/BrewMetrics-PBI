@@ -1,0 +1,43 @@
+table 'Date Table'
+	lineageTag: a961f512-07b4-4da1-973a-17009b1dae14
+
+	column Date
+		formatString: Short Date
+		lineageTag: 85d00647-7caa-4eee-a03b-81fe1ca05153
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 6e5e23ea-9a16-4342-a964-f73f487d06ae
+			defaultHierarchy: LocalDateTable_db2d1630-856a-4c65-b840-c6e4c9429434.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('Date Table'[Date],"mmm")
+		lineageTag: 1cf92298-e9a6-475e-80a1-f8a1c0d45404
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH('Date Table'[Date])
+		formatString: 0
+		lineageTag: 2d426635-0f58-4a7a-abc7-41457c574b0c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year' = FORMAT('Date Table'[Date],"MMM YYYY")
+		lineageTag: 01ecaed3-f621-42ca-a0b1-9ca6e14b24f8
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Table' = calculated
+		mode: import
+		source = CALENDAR(MIN(Transactions[transaction_date]),MAX(Transactions[transaction_date]))
+
+	annotation PBI_Id = d4c53477808140c8a2c27e40a49a1e7a
+
