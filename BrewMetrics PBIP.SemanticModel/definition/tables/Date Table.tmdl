@@ -15,6 +15,8 @@ table 'Date Table'
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column Month = FORMAT('Date Table'[Date],"mmm")
 		lineageTag: 1cf92298-e9a6-475e-80a1-f8a1c0d45404
 		summarizeBy: none
@@ -32,6 +34,39 @@ table 'Date Table'
 		lineageTag: 01ecaed3-f621-42ca-a0b1-9ca6e14b24f8
 		summarizeBy: none
 		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name' = FORMAT('Date Table'[Date],"DDD")
+		lineageTag: a3365cc3-69d9-4adf-b005-b77c4ed998a0
+		summarizeBy: none
+		sortByColumn: 'Weekday Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number' = WEEKNUM('Date Table'[Date],2)
+		formatString: 0
+		lineageTag: 19c54268-c1e3-4d1f-852b-037bb73ff05a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Number' = FORMAT('Date Table'[Date],"D")
+		lineageTag: e2c6659b-2472-411a-94e0-34ee782958cd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Number' = WEEKDAY('Date Table'[Date],2)
+		formatString: 0
+		lineageTag: 0fad2291-32c3-4941-8e7f-47e66f9067a8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday / WeekNum' = IF('Date Table'[Day Name]="Sat" || 'Date Table'[Day Name]="Sun" , "Weekend","Weekday")
+		lineageTag: cbbdc5d2-7405-4e62-b89a-51a3bc307c95
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 

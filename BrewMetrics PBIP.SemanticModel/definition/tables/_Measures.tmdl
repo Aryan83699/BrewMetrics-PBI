@@ -90,6 +90,16 @@ table _Measures
 			```
 		lineageTag: b7fe7a61-a8b4-4f81-96a8-58239298a6f4
 
+	measure message = "Hover on this visual to see details"
+		lineageTag: ca125b42-17d7-42b1-a43e-aef67942e925
+
+	measure Placeholder = 0
+		formatString: 0
+		lineageTag: fc536fdf-3b71-4806-8f94-0fce1f963b65
+
+	measure 'Label for Store Location' = SELECTEDVALUE(Transactions[store_location]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
+		lineageTag: 8a69ac7d-2251-4edb-9173-eeed4e14bfe2
+
 	column Column
 		formatString: 0
 		lineageTag: ed5b0d0d-fb74-4236-abe4-fc59e2093dba
