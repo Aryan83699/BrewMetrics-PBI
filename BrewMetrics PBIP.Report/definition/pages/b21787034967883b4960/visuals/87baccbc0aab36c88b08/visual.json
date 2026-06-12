@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "f20b511e31cade203486",
+  "name": "87baccbc0aab36c88b08",
   "position": {
-    "x": 139.06004526694181,
-    "y": 534.51204899480763,
-    "z": 13000,
-    "height": 57.941685527892425,
-    "width": 91.258154706430574,
-    "tabOrder": 11000
+    "x": 140,
+    "y": 0,
+    "z": 1000,
+    "height": 240,
+    "width": 180,
+    "tabOrder": 1000
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -27,8 +27,38 @@
                 }
               },
               "queryRef": "_Measures.Total Sales",
-              "nativeQueryRef": "Revenue",
-              "displayName": "Revenue"
+              "nativeQueryRef": "Sales",
+              "displayName": "Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Quantity Sold"
+                }
+              },
+              "queryRef": "_Measures.Total Quantity Sold",
+              "nativeQueryRef": "Quantity",
+              "displayName": "Quantity"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Orders"
+                }
+              },
+              "queryRef": "_Measures.Total Orders",
+              "nativeQueryRef": "Orders",
+              "displayName": "Orders"
             }
           ]
         }
@@ -53,49 +83,37 @@
       }
     },
     "objects": {
-      "categoryLabels": [
+      "labels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
+                  "Value": "false"
                 }
               }
             }
           }
         }
       ],
-      "labels": [
+      "legend": [
         {
           "properties": {
-            "fontFamily": {
+            "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                  "Value": "'BottomCenter'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
-            "color": {
+            "labelColor": {
               "solid": {
                 "color": {
                   "expr": {
@@ -112,6 +130,19 @@
       ]
     },
     "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
       "background": [
         {
           "properties": {

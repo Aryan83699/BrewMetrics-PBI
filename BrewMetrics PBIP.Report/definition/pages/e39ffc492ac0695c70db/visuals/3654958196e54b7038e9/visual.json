@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "e10f00a38048abc0ba7a",
+  "name": "3654958196e54b7038e9",
   "position": {
-    "x": 24.625216349354282,
-    "y": 660.53521501797366,
-    "z": 14000,
-    "height": 189.75902010384769,
-    "width": 334.61323392357878,
-    "tabOrder": 12000
+    "x": 359.23845027293305,
+    "y": 446.15097856477172,
+    "z": 19000,
+    "height": 380.96658234589273,
+    "width": 269.42883770469979,
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,11 +23,11 @@
                       "Entity": "Transactions"
                     }
                   },
-                  "Property": "store_location"
+                  "Property": "product_category"
                 }
               },
-              "queryRef": "Transactions.store_location",
-              "nativeQueryRef": "store_location",
+              "queryRef": "Transactions.product_category",
+              "nativeQueryRef": "product_category",
               "active": true
             }
           ]
@@ -153,6 +153,18 @@
                   "Value": "true"
                 }
               }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -166,7 +178,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Label for Store Location"
+                  "Property": "Label for Product Category"
                 }
               }
             }
@@ -193,7 +205,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "MoM Growth & Diff Sales"
+                  "Property": "New MoM Label"
                 }
               }
             }
@@ -223,6 +235,13 @@
               "expr": {
                 "Literal": {
                   "Value": "8D"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
                 }
               }
             }
@@ -283,6 +302,17 @@
           "selector": {
             "metadata": "_Measures.Total Sales"
           }
+        },
+        {
+          "properties": {
+            "fillTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -306,7 +336,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Sakes by store location'"
+                  "Value": "'Sakes by product category'"
                 }
               }
             },

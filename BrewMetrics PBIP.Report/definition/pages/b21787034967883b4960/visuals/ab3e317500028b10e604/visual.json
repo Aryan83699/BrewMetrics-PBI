@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "f20b511e31cade203486",
+  "name": "ab3e317500028b10e604",
   "position": {
-    "x": 139.06004526694181,
-    "y": 534.51204899480763,
-    "z": 13000,
-    "height": 57.941685527892425,
-    "width": 91.258154706430574,
-    "tabOrder": 11000
+    "x": 140,
+    "y": 9,
+    "z": 2001,
+    "height": 28,
+    "width": 73,
+    "tabOrder": 2001
   },
   "visual": {
     "visualType": "card",
@@ -17,39 +17,25 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Day Name"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Function": 3
                 }
               },
-              "queryRef": "_Measures.Total Sales",
-              "nativeQueryRef": "Revenue",
-              "displayName": "Revenue"
+              "queryRef": "Min(Date Table.Day Name)",
+              "nativeQueryRef": "First Day Name"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Total Sales"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "objects": {
@@ -59,19 +45,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
+                  "Value": "false"
                 }
               }
             }
@@ -81,17 +55,17 @@
       "labels": [
         {
           "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
             "fontFamily": {
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
                 }
               }
             },

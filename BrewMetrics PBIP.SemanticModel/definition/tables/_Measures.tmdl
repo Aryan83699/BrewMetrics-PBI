@@ -100,6 +100,32 @@ table _Measures
 	measure 'Label for Store Location' = SELECTEDVALUE(Transactions[store_location]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
 		lineageTag: 8a69ac7d-2251-4edb-9173-eeed4e14bfe2
 
+	measure 'Daily Average Sales' = AVERAGEX(ALLSELECTED(Transactions[transaction_date]),[Total Sales])
+		lineageTag: 8b0f1b91-f892-4682-9782-7bfb8c397565
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Colour Bars' = IF([Total Sales]>[Daily Average Sales] ,"Above","Below")
+		lineageTag: e5b001cc-720e-4e4a-867d-8fffec60b053
+
+	measure 'Label for Product Category' = SELECTEDVALUE(Transactions[product_category]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
+		lineageTag: dec117a6-72bd-4656-a998-7d9900a77292
+
+	measure 'New MoM Label' = ```
+			
+			
+			    VAR month_diff= [CM Sales]-[PM Sales]
+			    VAR mom = month_diff/ [PM Sales]
+			    VAR _sign= IF(month_diff>0 ,"+","")
+			    VAR _sign_trend=IF(month_diff>0,"∆","∇")
+			
+			    RETURN _sign_trend & " " & _sign & FORMAT(mom,"#0.0%")
+			```
+		lineageTag: 6cceee80-709d-4565-af61-81f9b75ba308
+
+	measure 'Label for Product Type' = SELECTEDVALUE(Transactions[product_type]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
+		lineageTag: b81cc661-7665-4f12-96a6-15fc26d8da45
+
 	column Column
 		formatString: 0
 		lineageTag: ed5b0d0d-fb74-4236-abe4-fc59e2093dba

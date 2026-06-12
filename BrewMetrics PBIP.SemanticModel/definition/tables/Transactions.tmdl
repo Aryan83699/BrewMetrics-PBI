@@ -109,6 +109,13 @@ table Transactions
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Hour = HOUR(Transactions[transaction_time])
+		formatString: 0
+		lineageTag: 545973b9-4a84-4c7d-a4b7-83f912394d4b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Transactions = m
 		mode: import
 		source =
